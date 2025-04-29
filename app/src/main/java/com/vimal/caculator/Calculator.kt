@@ -36,6 +36,7 @@ val buttonList = listOf(
 @Composable
 fun Calculator(modifier: Modifier = Modifier, viewModel: CalculatorViewModel) {
     val equationText = viewModel.equation.observeAsState()
+    val resultText = viewModel.result.observeAsState()
 
     Box(modifier = modifier) {
         Column(
@@ -45,7 +46,7 @@ fun Calculator(modifier: Modifier = Modifier, viewModel: CalculatorViewModel) {
             horizontalAlignment = Alignment.End,
         ) {
             Text(
-                text = "1 + 2",
+                text = equationText.value ?: "",
                 fontSize = 30.sp,
                 textAlign = TextAlign.End,
                 maxLines = 5,
@@ -55,7 +56,7 @@ fun Calculator(modifier: Modifier = Modifier, viewModel: CalculatorViewModel) {
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
-                text = "3",
+                text = resultText.value ?: "",
                 fontSize = 60.sp,
                 textAlign = TextAlign.End,
                 maxLines = 2,
