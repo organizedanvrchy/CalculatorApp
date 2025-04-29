@@ -60,4 +60,5 @@ dependencies {
     val livedataVersion = "1.8.0"
     implementation("androidx.compose.runtime:runtime-livedata:$livedataVersion")
     implementation("org.mozilla:rhino:1.8.0")
+    implementation("com.idapgroup:autosizetext-compose:0.3.0")
 }

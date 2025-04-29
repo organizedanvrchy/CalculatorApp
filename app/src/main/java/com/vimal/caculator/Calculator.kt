@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.idapgroup.autosizetext.AutoSizeText
 
 // List of buttons
 val buttonList = listOf(
@@ -42,24 +44,31 @@ fun Calculator(modifier: Modifier = Modifier, viewModel: CalculatorViewModel) {
         Column(
             modifier = Modifier
                 .padding(10.dp)
-                .fillMaxSize(),
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.End,
         ) {
-            Text(
+            AutoSizeText(
                 text = equationText.value ?: "",
                 fontSize = 30.sp,
+                minFontSize = 12.sp,
                 textAlign = TextAlign.End,
                 maxLines = 5,
-                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
             )
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Text(
+            AutoSizeText(
                 text = resultText.value ?: "",
                 fontSize = 60.sp,
+                minFontSize = 30.sp,
                 textAlign = TextAlign.End,
-                maxLines = 2,
+                maxLines = 1,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
             )
 
             Spacer(modifier = Modifier.height(10.dp))
